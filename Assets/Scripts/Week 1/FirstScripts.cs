@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class MovementTest : MonoBehaviour
+public class FirstScripts : MonoBehaviour
 {
 
     public Vector2 startingPosition;
     public Vector3 movedirection;
-    punlic float speed; 
+    public float speed; 
     // 2 Slashes and the green text after are called comments. This is not coce that runs. it is usually used for notes.
     //Characers are only allowed to be 1 letter or character on a keyboard. Make sure to use
     //an postropher to surron the character you want it to represent! 
