@@ -13,4 +13,8 @@ public class Floor : MonoBehaviour
     {
         
     }
+    public void SayHello()
+    {
+        Debug.Log("Hello!");
+    }
 }
