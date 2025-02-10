@@ -52,6 +52,28 @@ public class LightBehavior : MonoBehaviour
     public void ChangeLightColor(Color SantaClaus)
     {
         lightWeWantToChange.color = SantaClaus;
+        if(lightWeWantToChange.color == Color.green)
+        {
+            lightWeWantToChange.transform.position += Vector3.right * 3;
+        }
+        if(lightWeWantToChange.color == Color.blue)
+        {
+            lightWeWantToChange.gameObject.SetActive(false); 
+            // else. None of the conditions above were met, so do this if its anything other than freen, red, ir blue.
+            // parenthisis ends statement 
+        }
+        if (lightWeWantToChange.color == Color.green || lightWeWantToChange.color == Color.red)
+        {
+            //If the color is green or red, it will run this code.
+        }
+        if(lightWeWantToChange.color == Color.blue && lightWeWantToChange.intensity > 50f)
+        {
+            //If the color is blye and the intensity of the light is greater than 50, it will run this code.
+        }
+        if(lightWeWantToChange.color == Color.white || (lightWeWantToChange.color == Color.black && lightWeWantToChange.intensity <= 25))
+        {
+            //If the color is white OR the color is both blak and its intensity is less than or greater than 25, it will run this code.
+        }
     }
     private void OnEnable()
     {
@@ -66,4 +88,10 @@ public class LightBehavior : MonoBehaviour
     {
         //This is called when an object is going to be destroyed before it is finished being destroyed.
     }
+    
+
+
+
+
+
 }
