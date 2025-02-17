@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Cannonball : MonoBehaviour
 {
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +14,19 @@ public class Cannonball : MonoBehaviour
     {
         
     }
+    //figures out random force and random direction calls upon rigid body 
+    
+    public void AddRandomForce()
+    {
+        Vector3 randomDirection = Vector3.zero;
+        randomDirection.x = Random.Range(-1f, 1f);
+        randomDirection.y = Random.Range(-1f, 1f);
+        randomDirection.z = Random.Range(-1f, 1f);
+
+        float forceMutiplier = Random.Range(100, 750);
+        this.gameObject.GetComponent<Rigidbody>().AddForce(randomDirection * forceMutiplier);
+    }    
+
     private void OnCollisionEnter(Collision otherObject)
     {
         Debug.Log(otherObject.gameObject.name);
