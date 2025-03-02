@@ -17,7 +17,7 @@ public class UICounter:MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hasTimerfinished = true)
+        if(hasTimerfinished == true)
         {
             
            allowCounting = false;

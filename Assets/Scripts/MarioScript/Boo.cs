@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Boo : MonoBehaviour
 {
     public GameObject Booprefab;
     public Transform BooSpawn;
+    public bool  hasTimerFinished;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +25,7 @@ public class Boo : MonoBehaviour
         //    void vanish then reference what that is so: mesh renderer turning off and on.
         // randomDirection x = (1,1,1)
         //
+          GameObject go = Instantiate(Booprefab, BooSpawn.position, BooSpawn.rotation);
     }
 
     // Update is called once per frame
@@ -29,4 +33,23 @@ public class Boo : MonoBehaviour
     {
         
     }
+    public void StartGame()
+    {
+        {
+            GameObject go = Instantiate(Booprefab, BooSpawn.position, BooSpawn.rotation);
+            Vector3 randomDirection = Vector3.zero;
+            randomDirection.x = Random.Range(-1f, 1f);
+            randomDirection.y = Random.Range(-1f, 1f);
+            randomDirection.z = Random.Range(-1f, 1f);
+
+            float forceMutiplier = Random.Range(100, 750);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(randomDirection * forceMutiplier);
+        }
+
+    }
+
+
 }
+    
+    
+
