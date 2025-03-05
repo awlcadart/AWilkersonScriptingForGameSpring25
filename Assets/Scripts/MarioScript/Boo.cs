@@ -4,14 +4,15 @@ using System.Linq;
 
 public class Boo : MonoBehaviour
 {
-    public GameObject Booprefab;
-    public Transform BooSpawn;
-    public bool  hasTimerFinished;
 
+    public bool  hasTimerFinished;
+    public Vector3 randomDirection = Vector3.zero;
+    public float speed = 20f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Invoke("Vanish", Random.Range(1f, 10f));
       // IvokeRepeating(name of(Booprefab), 2, 2);
         //InvokeRepeating repeats this action every X seconds)
        //CancelInvoke
@@ -25,29 +26,45 @@ public class Boo : MonoBehaviour
         //    void vanish then reference what that is so: mesh renderer turning off and on.
         // randomDirection x = (1,1,1)
         //
-          GameObject go = Instantiate(Booprefab, BooSpawn.position, BooSpawn.rotation);
+
+        randomDirection.x = Random.Range(-1f, 1f);
+       
+        randomDirection.z = Random.Range(-1f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.gameObject.GetComponent<Rigidbody>().AddForce(randomDirection * speed * Time.deltaTime);
     }
     public void StartGame()
     {
         {
-            GameObject go = Instantiate(Booprefab, BooSpawn.position, BooSpawn.rotation);
-            Vector3 randomDirection = Vector3.zero;
-            randomDirection.x = Random.Range(-1f, 1f);
-            randomDirection.y = Random.Range(-1f, 1f);
-            randomDirection.z = Random.Range(-1f, 1f);
+            
 
             float forceMutiplier = Random.Range(100, 750);
-            this.gameObject.GetComponent<Rigidbody>().AddForce(randomDirection * forceMutiplier);
+            
         }
 
     }
+    public void BooMover()
+    {
+        randomDirection.x = Random.Range(-1f, 1f);
 
+        randomDirection.z = Random.Range(-1f, 1f);
+    }
+    public void Appear()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        Invoke("Vanish", Random.Range(5f, 10f));
+        BooMover();
+        
+    }
+    public void Vanish()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+        Invoke("Appear", 1f);
+    }
 
 }
     
